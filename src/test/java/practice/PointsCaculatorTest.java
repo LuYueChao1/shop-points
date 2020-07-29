@@ -72,4 +72,17 @@ public class PointsCaculatorTest {
         //then
         assertEquals(1890,points);
     }
+
+    @Test
+    public void should_get_2200_points_when_buy_1100_yuan_promotion_goods_and_2000_basic_goods(){
+        //given
+        Goods goodsTv=new Goods(1100.00,GoodsName.TV);
+        Goods goodsWashMachine=new Goods(2000.00,GoodsName.WASHMACHINE);
+        List<Goods> goodsBuy=Arrays.asList(goodsTv,goodsWashMachine);
+        PointsCalculator pointsCalculator=new PointsCalculator(goodsBuy);
+        //when
+        int points=pointsCalculator.calculatePoints();
+        //then
+        assertEquals(2200,points);
+    }
 }
