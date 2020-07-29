@@ -38,4 +38,38 @@ public class PointsCaculatorTest {
         assertEquals(100,points);
     }
 
+    @Test
+    public void should_get_1067_points_when_buy_2350_yuan_basic_goods(){
+        //given
+        Goods goodsFridge=new Goods(2350.00,GoodsName.Fridge);
+        List<Goods> goodsBuy=Arrays.asList(goodsFridge);
+        PointsCalculator pointsCalculator=new PointsCalculator(goodsBuy);
+        //when
+        int points=pointsCalculator.calculatePoints();
+        //then
+        assertEquals(1067,points);
+    }
+    @Test
+    public void should_get_3000_points_when_buy_2000_yuan_promotion_goods(){
+        //given
+        Goods goodsTv=new Goods(2000.00,GoodsName.TV);
+        List<Goods> goodsBuy=Arrays.asList(goodsTv);
+        PointsCalculator pointsCalculator=new PointsCalculator(goodsBuy);
+        //when
+        int points=pointsCalculator.calculatePoints();
+        //then
+        assertEquals(3000,points);
+    }
+    @Test
+    public void should_get_1890_points_when_buy_800_yuan_promotion_goods_and_2000_basic_goods(){
+        //given
+        Goods goodsTv=new Goods(800.00,GoodsName.TV);
+        Goods goodsWashMachine=new Goods(2000.00,GoodsName.WASHMACHINE);
+        List<Goods> goodsBuy=Arrays.asList(goodsTv,goodsWashMachine);
+        PointsCalculator pointsCalculator=new PointsCalculator(goodsBuy);
+        //when
+        int points=pointsCalculator.calculatePoints();
+        //then
+        assertEquals(1890,points);
+    }
 }
