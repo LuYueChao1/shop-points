@@ -11,6 +11,7 @@ public class PointsCalculator {
     public PointsCalculator(List<Goods> goodsList){
         this.goodsList=goodsList;
     }
+
     public List<Goods> getPromotionGoodsList(){
         return  goodsList.stream().filter(goods -> promotionGoodsNameList.contains(goods.getGoodsName()))
                 .collect(Collectors.toList());
@@ -24,8 +25,8 @@ public class PointsCalculator {
         return goodsList;
     }
     public int calculatePoints(){
-        GoodsList promotionGoodsList=new PromotionGoodsList(getPromotionGoodsList(),1000);
-        double surplusMoney=1000-promotionGoodsList.getGoodsListMoney();
+        GoodsList promotionGoodsList=new PromotionGoodsList(getPromotionGoodsList(),pointsCalculateBorder);
+        double surplusMoney=pointsCalculateBorder-promotionGoodsList.getGoodsListMoney();
         GoodsList basicGoodsList=new BasicGoodsList(getBasicGoodsList(),surplusMoney);
         return promotionGoodsList.calculateGoodsListPoints()+basicGoodsList.calculateGoodsListPoints();
     }
